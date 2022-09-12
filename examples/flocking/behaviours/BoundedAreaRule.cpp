@@ -11,22 +11,24 @@ Vector2 BoundedAreaRule::computeForce(const std::vector<Boid*>& neighborhood, Bo
 
     Vector2 windowSize = this->world->engine->window->size();
     Vector2 pos = boid->getPosition();
+    Vector2 distToEdge = windowSize - pos;
 
-    if (pos.x < desiredDistance)
+    if (pos.x < desiredDistance) // On left
     {
-        force.x++;
+        force.x = desiredDistance - pos.x;
     }
-    if (pos.y < desiredDistance)
+    else if (distToEdge.x < desiredDistance) // On right
     {
-        force.y++;
+        force.x = distToEdge.x - desiredDistance;
     }
-    if (pos.x > windowSize.x - desiredDistance)
+
+    if (pos.y < desiredDistance) // On top
     {
-        force.x--;
+        force.y = desiredDistance - pos.y;
     }
-    if (pos.y < windowSize.y - desiredDistance)
+    else if (distToEdge.y < desiredDistance) // On bottom
     {
-        force.y--;
+        force.y = distToEdge.y - desiredDistance;
     }
 
     return force;
