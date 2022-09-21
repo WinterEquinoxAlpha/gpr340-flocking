@@ -10,10 +10,22 @@ Vector2 SeparationRule::computeForce(const std::vector<Boid*>& neighborhood, Boi
 
     // todo: implement a force that if neighbor(s) enter the radius, moves the boid away from it/them
     if (!neighborhood.empty()) {
-        Vector2 position = boid->transform.position;
+        Vector2 position = boid->getPosition();
         int countCloseFlockmates = 0;
 
-
+        for (Boid* b : neighborhood)
+        {
+            Vector2 dif = b->getPosition() - position;
+            if (abs(dif.getMagnitude()) < desiredDistance)
+            {
+                ++countCloseFlockmates;
+                separatingForce -= dif;
+            }
+        }
+        if (countCloseFlockmates > 0)
+        {
+            separatingForce /= countCloseFlockmates;
+        }
     }
 
     separatingForce = Vector2::normalized(separatingForce);
