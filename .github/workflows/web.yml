@@ -19,10 +19,10 @@ jobs:
           submodules: 'true'
 
       - name: Emscripten Install
-        run: ./scripts/emscripten-install.sh || true
+        run: bash ./scripts/emscripten-install.sh || true
 
       - name: Emscripten Build
-        run: ./scripts/emscripten-build.sh
+        run: bash ./scripts/emscripten-build.sh
 
       - name: Release
         uses: fnkr/github-action-ghr@v1.3

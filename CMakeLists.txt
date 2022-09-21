@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21.1)
+cmake_minimum_required(VERSION 3.16.1)
 
 include(cmake/gate/cmake/HunterGate.cmake)
 option(HUNTER_STATUS_DEBUG "Hunter debug info" ON)
@@ -10,10 +10,10 @@ HunterGate(
 
 project(mobagen)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 #set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_C_STANDARD 17)
+#set(CMAKE_C_STANDARD 14)
 #set(CMAKE_C_STANDARD_REQUIRED ON)
 
 #CHECK MINGW
