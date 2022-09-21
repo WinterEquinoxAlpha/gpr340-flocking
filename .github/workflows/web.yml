@@ -2,9 +2,9 @@ name: WEB-EMSCRIPTEN
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 env:
   BUILD_TYPE: MinSizeRel
